@@ -1,0 +1,53 @@
+import React, { useEffect, useState } from "react";
+
+const App = () => {
+  const [location, setLocation] = useState("bucuresti");
+  const [weather, setWeather] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://api.weatherapi.com/v1/forecast.json?key=d7a21304535c41b7a07211753252712&q=${location}i&days=14&aqi=yes&alerts=yes`
+        );
+        if (!res.ok) {
+          throw new Error("Error in response");
+        }
+        const data = await res.json();
+        setWeather(data);
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [location]);
+
+  return (
+    <div>
+      <h1>Weather App</h1>
+      <input
+        type="text"
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+      />
+      <button onClick={() => setLocation(location)}>search</button>
+      {weather ? (
+        <div>
+          <p>Temperatura: {weather.current.temp_c}</p>
+          {weather.forecast.forecastday.map((t, index) => {
+            return(
+              <div key={index}>
+                <p>temperatura maxima este: {t.day.maxtemp_c}</p>
+              </div>
+            )
+          })}
+        </div>
+      ) : (
+        <p>Se incarca...</p>
+      )}
+    </div>
+  );
+};
+
+export default App;
