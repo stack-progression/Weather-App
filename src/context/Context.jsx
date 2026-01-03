@@ -4,6 +4,7 @@ import { AppContext } from "./AppContext";
 const Context = ({ children }) => {
   const [location, setLocation] = useState("bucuresti");
   const [weather, setWeather] = useState(null);
+  const [value, setValue] = useState(location);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,10 +76,12 @@ const Context = ({ children }) => {
   const getTempHour = (t) => {
     const date = new Date(t * 1000);
     const hour = date.getHours();
-    return hour
-  }
+    return hour;
+  };
 
   const AppValue = {
+    value,
+    setValue,
     location,
     setLocation,
     weather,
