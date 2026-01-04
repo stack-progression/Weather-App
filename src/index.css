@@ -1,0 +1,51 @@
+/* /////////////////////// 
+ -------Resset code-------- 
+ /////////////////////// */
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body,h1,h2,h3,h4,h5,h6,p,ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+/* /////////////////////// 
+ -------    Root   -------- 
+ /////////////////////// */
+
+:root {
+  --black: #000000;
+  --black-transparent: rgba(0, 0, 0, 15%);
+  --white: #ffffff;
+  --whiite-1: #d1d1d1;
+  --blue: #5296f5;
+  --blue-1: #7fceff;
+  --blue-2: #91c1ff;
+  --purple: #8883ff;
+}
+
+body{
+  background: linear-gradient(to bottom, var(--blue-1), var(--blue-2), var(--purple));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}

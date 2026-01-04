@@ -1,0 +1,27 @@
+.header-outlet {
+  padding: 0 15px;
+}
+@media (min-width: 768px) {
+  .header-outlet {
+    padding: 0 35px;
+  }
+}
+@media (min-width: 1300px) {
+  .root-layout {
+    display: flex;
+    flex-direction: row;
+  }
+  .root-search {
+    position: relative;
+    width: 25%;
+  }
+  .header-outlet {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+  }
+  .root-layout {
+    display: flex;
+    flex-direction: row;
+  }
+}

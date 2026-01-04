@@ -1,0 +1,37 @@
+import React, { useContext } from "react";
+import "./Hours.css";
+import { AppContext } from "../../context/AppContext";
+import Hour from "../Hour/Hour";
+
+const Hours = () => {
+  const { weather, getHour } = useContext(AppContext);
+  console.log(weather?.forecast?.forecastday[0]?.hour);
+
+  return (
+    <div className="hours">
+      <h2 className="hours-title">
+        Maxime de {weather?.forecast?.forecastday[0]?.day?.maxtemp_c}° si minime
+        de {weather?.forecast?.forecastday[0]?.day?.mintemp_c}°
+      </h2>
+      <hr className="hours-hr" />
+      <div className="hours-hour">
+        <button ><i className="fa-solid fa-chevron-left"></i></button>
+        {weather?.forecast?.forecastday[0]?.hour.map((h, index) => {
+          return (
+            <Hour
+              key={index}
+              id={index}
+              hour={getHour(h?.time_epoch)}
+              image={h?.condition?.icon}
+              temp={h?.temp_c}
+              humidity={h?.humidity}
+            />
+          );
+        })}
+        <button ><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  );
+};
+
+export default Hours;

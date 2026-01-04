@@ -1,0 +1,66 @@
+/* phone version */
+.hours {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 160px;
+  background: var(--black-transparent);
+  border-radius: 10px;
+  padding: 10px 12px 0;
+  color: var(--white);
+}
+.hours-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  font-size: 14px;
+  width: 100%;
+}
+.hours-hr {
+  width: 100%;
+  border: none;
+  height: 0.5px;
+  background: var(--whiite-1);
+}
+.hours-hour {
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  gap: 20px;
+}
+.hours-hour::-webkit-scrollbar {
+  width: 0;
+}
+/* phone version */
+/* tablet version */
+@media (min-width: 768px) {
+  .hours {
+    height: 270px;
+    padding: 25px 12px 0;
+  }
+  .hours-title {
+    height: 26px;
+    font-size: 16px;
+  }
+  .hours-hr {
+    height: 1px;
+  }
+}
+/* tablet version */
+/* desktop version */
+@media (min-width: 1300px) {
+  .hours {
+    height: 330px;
+    padding: 12px 40px 0;
+  }
+  .hours-title {
+    height: 30px;
+    font-size: 24px;
+  }
+  .hours-hour {
+    overflow: scroll;
+    gap: 40px;
+  }
+}
+/* desktop version */

@@ -1,11 +1,21 @@
-import React from 'react'
+import React from "react";
+import "./RootLayout.css";
+import { Outlet } from "react-router-dom";
+import Header from "../components/Header/Header";
+import Search from "../components/Search/Search";
 
 const RootLayout = () => {
   return (
-    <div>
-      <h1>Weather App</h1>
+    <div className="root-layout">
+      <div className="root-search">
+        <Search />
+      </div>
+      <div className="header-outlet">
+        <Header />
+        <Outlet />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default RootLayout
+export default RootLayout;

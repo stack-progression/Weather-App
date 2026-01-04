@@ -1,7 +1,6 @@
 import React from 'react'
-import './DayItem.css'
 
-const DayItem = () => {
+const WeatherDay = () => {
   return (
     <div>
       
@@ -9,4 +8,4 @@ const DayItem = () => {
   )
 }
 
-export default DayItem
+export default WeatherDay

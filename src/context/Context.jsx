@@ -5,6 +5,7 @@ const Context = ({ children }) => {
   const [location, setLocation] = useState("bucuresti");
   const [weather, setWeather] = useState(null);
   const [value, setValue] = useState(location);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -89,6 +90,8 @@ const Context = ({ children }) => {
     getDay,
     getHour,
     getTempHour,
+    open,
+    setOpen,
   };
 
   return <AppContext.Provider value={AppValue}>{children}</AppContext.Provider>;
