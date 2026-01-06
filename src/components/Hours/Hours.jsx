@@ -5,7 +5,6 @@ import Hour from "../Hour/Hour";
 
 const Hours = () => {
   const { weather, getHour } = useContext(AppContext);
-  console.log(weather?.forecast?.forecastday[0]?.hour);
 
   return (
     <div className="hours">
@@ -15,7 +14,6 @@ const Hours = () => {
       </h2>
       <hr className="hours-hr" />
       <div className="hours-hour">
-        <button ><i className="fa-solid fa-chevron-left"></i></button>
         {weather?.forecast?.forecastday[0]?.hour.map((h, index) => {
           return (
             <Hour
@@ -28,7 +26,6 @@ const Hours = () => {
             />
           );
         })}
-        <button ><i class="fa-solid fa-chevron-right"></i></button>
       </div>
     </div>
   );

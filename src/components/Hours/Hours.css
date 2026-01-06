@@ -4,6 +4,7 @@
   justify-content: space-between;
   flex-direction: column;
   height: 160px;
+
   background: var(--black-transparent);
   border-radius: 10px;
   padding: 10px 12px 0;
@@ -31,6 +32,7 @@
 }
 .hours-hour::-webkit-scrollbar {
   width: 0;
+  /* sau mai simplu display: none; dar am deja tot facut pe prima varianta adica cu (width: 0;) */
 }
 /* phone version */
 /* tablet version */
@@ -61,6 +63,35 @@
   .hours-hour {
     overflow: scroll;
     gap: 40px;
+    scroll-behavior: smooth;
+    anchor-name: --scrollbtn;
+    scroll-snap-type: x mandatory;
   }
+  .hours-hour::scroll-button(right),
+.hours-hour::scroll-button(left) {
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  font-size: 40px;
+  color: var(--white);
+  border: none;
+  background: none;
+  content: "〉";
+  cursor: pointer;
+  position: fixed;
+  position-anchor: --scrollbtn;
+  position-area: right center;
+}
+.hours-hour::scroll-button(left) {
+  content: "〈";
+  position-area: left center;
+}
+.hours-hour::scroll-button(right):disabled,
+.hours-hour::scroll-button(left):disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
 }
 /* desktop version */

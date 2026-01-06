@@ -6,6 +6,8 @@ const Context = ({ children }) => {
   const [weather, setWeather] = useState(null);
   const [value, setValue] = useState(location);
   const [open, setOpen] = useState(false);
+  const [weatherItems, setWeatherItems] = useState([]);
+  // const [getName, setGetName] = useState("")
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,6 +20,10 @@ const Context = ({ children }) => {
         }
         const data = await res.json();
         setWeather(data);
+        setWeatherItems([
+          ...weatherItems,
+          { text: data?.location?.name, id: Date.now() },
+        ]);
       } catch (error) {
         console.error(error);
       }
@@ -80,7 +86,19 @@ const Context = ({ children }) => {
     return hour;
   };
 
+  const unice = Object.values(
+    weatherItems.reduce((acc, item) => {
+      acc[item.text] = item;
+      return acc;
+    }, {})
+  );
+
+  const deleteItem = (e) => {
+    setWeatherItems(unice.filter((t) => t.id !== e));
+  }
+
   const AppValue = {
+    unice,
     value,
     setValue,
     location,
@@ -92,9 +110,14 @@ const Context = ({ children }) => {
     getTempHour,
     open,
     setOpen,
+    weatherItems,
+    setWeatherItems,
+    deleteItem
   };
 
   return <AppContext.Provider value={AppValue}>{children}</AppContext.Provider>;
 };
 
 export default Context;
+
+//sa reusesc sa preiau numele obiectului din weather fara sa am delay si sa fac cumva sa sterg textele nedorite

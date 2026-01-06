@@ -1,12 +1,18 @@
-import React from 'react'
-import './SearchItems.css'
+import React, { useContext } from "react";
+import "./SearchItems.css";
+import { AppContext } from "../../context/AppContext";
 
 const SearchItems = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  
+  const { setLocation, unice, deleteItem } = useContext(AppContext);
 
-export default SearchItems
+  return (
+    <div className="search-items">
+      {unice.sort((a, b) => b.id - a.id).map((t) => {
+        return <p className="search-items-text" onClick={() => setLocation(t.text)} onDoubleClick={() => deleteItem(t.id)} onTouchMove={() => deleteItem(t.id)} key={t.id}>{t.text}</p>;
+      })}
+    </div>
+  );
+};
+
+export default SearchItems;

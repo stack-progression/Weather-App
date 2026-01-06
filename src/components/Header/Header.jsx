@@ -17,6 +17,7 @@ const Header = () => {
         <i className="fa-solid fa-bars"></i>
       </button>
       <h1 className="header-title">{weather?.location?.name}</h1>
+      <p>{weather?.location?.country}</p>
       <p className="header-temp">{weather?.current?.temp_c}°</p>
       <p className="header-temp-max-min">
         {weather?.forecast?.forecastday[0]?.day?.maxtemp_c}° /{" "}

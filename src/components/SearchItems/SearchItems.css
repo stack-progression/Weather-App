@@ -1,0 +1,27 @@
+.search-items{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    overflow-y: scroll;
+}
+.search-items::-webkit-scrollbar{
+    display: none;
+}
+.search-items-text{
+    color: var(--white);
+    font-size: 20px;
+    cursor: pointer;
+}
+@media (min-width: 768px) {
+.search-items-text{
+    font-size: 34px;
+}
+}
+@media (min-width: 1300px) {
+.search-items-text{
+    font-size: 30px;
+}
+}
