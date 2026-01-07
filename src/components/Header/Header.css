@@ -48,6 +48,10 @@
     font-weight: 300;
     margin-bottom: 18px;
 }
+.header-day{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
 /* phone version */
 /* tablet version */
 @media (min-width: 768px){
@@ -74,6 +78,9 @@
     width: 350px;
     font-size: 24px;
     margin-bottom: 24px;
+}
+.header-day{
+    font-size: 28px;
 }
 }
 /* tablet version */

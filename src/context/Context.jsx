@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { AppContext } from "./AppContext";
+
+// useEffect,
 
 const Context = ({ children }) => {
   const [location, setLocation] = useState("bucuresti");
@@ -7,29 +9,29 @@ const Context = ({ children }) => {
   const [value, setValue] = useState(location);
   const [open, setOpen] = useState(false);
   const [weatherItems, setWeatherItems] = useState([]);
-  // const [getName, setGetName] = useState("")
+  const [epoch, setEpoch] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(
-          `https://api.weatherapi.com/v1/forecast.json?key=d7a21304535c41b7a07211753252712&q=${location}&days=14&aqi=yes&alerts=yes`
-        );
-        if (!res.ok) {
-          throw new Error("problem in response");
-        }
-        const data = await res.json();
-        setWeather(data);
-        setWeatherItems([
-          ...weatherItems,
-          { text: data?.location?.name, id: Date.now() },
-        ]);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, [location]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch(
+  //         `https://api.weatherapi.com/v1/forecast.json?key=d7a21304535c41b7a07211753252712&q=${location}&days=14&aqi=yes&alerts=yes`
+  //       );
+  //       if (!res.ok) {
+  //         throw new Error("problem in response");
+  //       }
+  //       const data = await res.json();
+  //       setWeather(data);
+  //       setWeatherItems([
+  //         ...weatherItems,
+  //         { text: data?.location?.name, id: Date.now() },
+  //       ]);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [location]);
 
   const getDay = (day) => {
     if (!day) return "";
@@ -95,9 +97,11 @@ const Context = ({ children }) => {
 
   const deleteItem = (e) => {
     setWeatherItems(unice.filter((t) => t.id !== e));
-  }
+  };
 
   const AppValue = {
+    epoch,
+    setEpoch,
     unice,
     value,
     setValue,
@@ -112,7 +116,7 @@ const Context = ({ children }) => {
     setOpen,
     weatherItems,
     setWeatherItems,
-    deleteItem
+    deleteItem,
   };
 
   return <AppContext.Provider value={AppValue}>{children}</AppContext.Provider>;

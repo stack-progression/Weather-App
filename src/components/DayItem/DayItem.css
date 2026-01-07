@@ -1,0 +1,135 @@
+/* phone version */
+.dayItem {
+  width: 100vw;
+  max-width: 500px;
+  padding: 0 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 35px;
+  color: var(--white);
+}
+.dayItem-day-off-week {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.dayItem-humidity-icon,
+.dayItem-min-max {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+.dayItem-humidity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  font-size: 14px;
+}
+.dayItem-humidity .fa-droplet {
+  font-size: 8px;
+}
+.dayItem-image {
+  height: 35px;
+}
+
+.dayItem-min-max p {
+  font-size: 16px;
+}
+/* phone version */
+/* tablet version */
+@media (min-width: 600px) {
+  .dayItem {
+    max-width: 1000px;
+    padding: 0 35px;
+    height: 60px;
+  }
+  .dayItem-day-off-week {
+    font-size: 24px;
+  }
+  .dayItem-humidity {
+    gap: 5px;
+    font-size: 20px;
+  }
+  .dayItem-humidity .fa-droplet {
+    font-size: 12px;
+  }
+  .dayItem-image {
+    height: 60px;
+  }
+
+  .dayItem-min-max p {
+    font-size: 26px;
+  }
+}
+/* tablet version */
+@media (min-width: 1000px) and (max-width: 1300px) {
+  .dayItem {
+    height: 70px;
+  }
+  .dayItem-day-off-week {
+    height: 70px;
+    font-size: 30px;
+  }
+  .dayItem-humidity {
+    gap: 10px;
+    font-size: 28px;
+  }
+  .dayItem-humidity .fa-droplet {
+    font-size: 18px;
+  }
+  .dayItem-image {
+    height: 70px;
+  }
+
+  .dayItem-min-max p {
+    font-size: 32px;
+  }
+}
+/* desktop version */
+@media (min-width: 1300px) {
+  .dayItem:hover {
+    background: var(--black-transparent-1);
+  }
+  .dayItem {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background: var(--black-transparent);
+    border-radius: 10px;
+    padding: 0;
+  }
+  .dayItem-day-off-week {
+    height: 50px;
+    font-size: 40px;
+  }
+  .dayItem-humidity-icon,
+  .dayItem-min-max {
+    height: 70px;
+    gap: 100px;
+  }
+  .dayItem-humidity-icon {
+    flex-direction: row-reverse;
+  }
+  .dayItem-humidity {
+    gap: 5px;
+    font-size: 32px;
+  }
+  .dayItem-humidity .fa-droplet {
+    font-size: 20px;
+  }
+  .dayItem-image {
+    height: 80px;
+  }
+
+  .dayItem-min-max p {
+    font-size: 36px;
+  }
+}
+/* desktop version */

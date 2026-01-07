@@ -2,10 +2,8 @@ import React, { useContext } from "react";
 import "./Header.css";
 import { AppContext } from "../../context/AppContext";
 
-const Header = () => {
-  const { weather, setOpen, open} = useContext(AppContext);
-
-  console.log(weather);
+const Header = ({weather}) => {
+  const { setOpen, open, epoch, getDay} = useContext(AppContext);
 
   return (
     <div className="header">
@@ -24,6 +22,7 @@ const Header = () => {
         {weather?.forecast?.forecastday[0]?.day?.mintemp_c}° Se simte ca{" "}
         {weather?.forecast?.forecastday[0]?.day?.avgtemp_c}°
       </p>
+      <p className="header-day">{getDay(epoch)}</p>
     </div>
   );
 };

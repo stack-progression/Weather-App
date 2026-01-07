@@ -1,12 +1,27 @@
-import React from 'react'
-import './DayItem.css'
+import React, { useContext } from "react";
+import "./DayItem.css";
+import { AppContext } from "../../context/AppContext";
 
-const DayItem = () => {
+const DayItem = (item) => {
+
+  const {setEpoch} = useContext(AppContext);
+
   return (
-    <div>
-      
+    <div onClick={() => {setEpoch(item.epoch)}} className="dayItem">
+      <p className="dayItem-day-off-week">{item.dayOfWeek}</p>
+      <div className="dayItem-humidity-icon">
+        <p className="dayItem-humidity">
+          <i className="fa-solid fa-droplet"></i>
+          {item.humidity}%
+        </p>
+        <img className="dayItem-image" src={item.image} alt="" />
+      </div>
+      <div className="dayItem-min-max">
+        <p>{item.maxtemp}°</p>
+        <p>{item.mintemp}°</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default DayItem
+export default DayItem;

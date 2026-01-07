@@ -34,6 +34,7 @@ ul {
 :root {
   --black: #000000;
   --black-transparent: rgba(0, 0, 0, 15%);
+  --black-transparent-1: rgba(0, 0, 0, 25%);
   --white: #ffffff;
   --whiite-1: #d1d1d1;
   --blue: #5296f5;
