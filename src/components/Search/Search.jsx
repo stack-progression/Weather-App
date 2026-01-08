@@ -5,7 +5,7 @@ import SearchItems from "../SearchItems/SearchItems";
 import { AppContext } from "../../context/AppContext";
 
 const Search = () => {
-  const { open, setOpen } = useContext(AppContext);
+  const { open, setOpen, setChevron } = useContext(AppContext);
 
   useEffect(() => {
     if (window.innerWidth >= 1300) {
@@ -22,7 +22,7 @@ const Search = () => {
         <button
           style={{ display: window.innerWidth >= 1300 ? "none" : "flex" }}
           className="search-close-btn"
-          onClick={() => setOpen(false)}
+          onClick={() => (setOpen(false), setChevron(false))}
         >
           <i className="fa-solid fa-xmark"></i>
         </button>

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { AppContext } from '../../context/AppContext'
 import DayItem from '../DayItem/DayItem'
 
-const Days = ({weather}) => {
+const Days = () => {
 
-  const { getDay} = useContext(AppContext);
+  const { weather, setIndex, getDay, setTitleTemp} = useContext(AppContext);
 
   return (
     <div className='days'>
@@ -14,7 +14,7 @@ const Days = ({weather}) => {
       {
         weather?.forecast?.forecastday?.map((day, index) => {
           return(
-            <Link to={`${index}`} key={index}>
+            <Link onClick={() => ( window.scrollTo(0, 0), setTitleTemp(false), setIndex(index))} to={`${index}`} key={index}>
             <DayItem dayOfWeek={getDay(day?.date_epoch)} humidity={day?.day?.avghumidity} image={day?.day?.condition?.icon} maxtemp={day?.day?.maxtemp_c} mintemp={day?.day?.mintemp_c} epoch={day?.date_epoch}/>
             </Link>
           )

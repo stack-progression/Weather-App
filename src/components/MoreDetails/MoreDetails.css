@@ -1,0 +1,24 @@
+/* phone version */
+.more-details {
+  margin: 15px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  color: var(--white);
+}
+/* phone version */
+/* tablet version */
+@media (min-width: 768px) {
+  .more-details {
+    margin: 30px 0;
+    gap: 20px;
+  }
+}
+/* tablet version */
+/* desktop version */
+@media (min-width: 1500px) {
+  .more-details {
+    gap: 30px;
+  }
+}
+/* desktop version */

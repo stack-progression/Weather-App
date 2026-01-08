@@ -1,16 +1,17 @@
 import React from 'react'
 import Hours from "../components/Hours/Hours"
 import Days from '../components/Days/Days'
-import { useOutletContext } from 'react-router-dom'
+import MoreDetails from '../components/MoreDetails/MoreDetails'
 
 const Weather = () => {
 
-  const {weather} = useOutletContext()
 
   return (
     <div>
-      <Hours weather={weather}/>
-      <Days weather={weather}/>
+      <Hours/>
+      <Days/>
+      <hr className='hours-hr' style={{height: "3px"}}/>
+      <MoreDetails />
     </div>
   )
 }

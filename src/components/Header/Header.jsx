@@ -2,25 +2,27 @@ import React, { useContext } from "react";
 import "./Header.css";
 import { AppContext } from "../../context/AppContext";
 
-const Header = ({weather}) => {
-  const { setOpen, open, epoch, getDay} = useContext(AppContext);
+const Header = () => {
+  const { weather, titleTemp, setOpen, open, epoch, getDay, setChevron, currentLocation, CurrentDay} = useContext(AppContext);
+
+  console.log(titleTemp);
 
   return (
     <div className="header">
       <button
         style={{ display: open >= true ? "none" : "flex" }}
         className="header-btn-bar"
-        onClick={() => setOpen(true)}
+        onClick={() => (setOpen(true), setChevron(true))}
       >
         <i className="fa-solid fa-bars"></i>
       </button>
-      <h1 className="header-title">{weather?.location?.name}</h1>
-      <p>{weather?.location?.country}</p>
-      <p className="header-temp">{weather?.current?.temp_c}°</p>
+      <h1 className="header-title">{currentLocation?.name}</h1>
+      <p>{currentLocation?.country}</p>
+      <p className="header-temp">{titleTemp === true ? weather?.current?.temp_c : CurrentDay?.avgtemp_c}°</p>
       <p className="header-temp-max-min">
-        {weather?.forecast?.forecastday[0]?.day?.maxtemp_c}° /{" "}
-        {weather?.forecast?.forecastday[0]?.day?.mintemp_c}° Se simte ca{" "}
-        {weather?.forecast?.forecastday[0]?.day?.avgtemp_c}°
+        {CurrentDay?.maxtemp_c}° /{" "}
+        {CurrentDay?.mintemp_c}° Se simte ca{" "}
+        {CurrentDay?.avgtemp_c}°
       </p>
       <p className="header-day">{getDay(epoch)}</p>
     </div>

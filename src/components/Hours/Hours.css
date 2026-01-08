@@ -21,8 +21,10 @@
 .hours-hr {
   width: 100%;
   border: none;
+  outline: none;
   height: 0.5px;
-  background: var(--whiite-1);
+  color: var(--white);
+  background: var(--white);
 }
 .hours-hour {
   overflow-x: auto;

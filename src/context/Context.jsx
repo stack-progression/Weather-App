@@ -1,37 +1,65 @@
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppContext } from "./AppContext";
 
 // useEffect,
 
 const Context = ({ children }) => {
-  const [location, setLocation] = useState("bucuresti");
-  const [weather, setWeather] = useState(null);
+  const [location, setLocation] = useState(() => {
+    return localStorage.getItem("location") || "bucuresti";
+  });
+  const [index, setIndex] = useState(() => {
+    const savedIndex = localStorage.getItem("index");
+    return savedIndex ? JSON.parse(savedIndex) : 0;
+  });
+  const [weather, setWeather] = useState(() => {
+    const savedWeather = localStorage.getItem("weather");
+    return savedWeather ? JSON.parse(savedWeather) : null;
+  });
+  const [weatherItems, setWeatherItems] = useState(() => {
+    const savedWeatherItems = localStorage.getItem("weatherItems");
+    return savedWeatherItems ? JSON.parse(savedWeatherItems) : [];
+  });
   const [value, setValue] = useState(location);
   const [open, setOpen] = useState(false);
-  const [weatherItems, setWeatherItems] = useState([]);
+  const [chevron, setChevron] = useState(false);
   const [epoch, setEpoch] = useState(null);
+  const [titleTemp, setTitleTemp] = useState(true);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch(
-  //         `https://api.weatherapi.com/v1/forecast.json?key=d7a21304535c41b7a07211753252712&q=${location}&days=14&aqi=yes&alerts=yes`
-  //       );
-  //       if (!res.ok) {
-  //         throw new Error("problem in response");
-  //       }
-  //       const data = await res.json();
-  //       setWeather(data);
-  //       setWeatherItems([
-  //         ...weatherItems,
-  //         { text: data?.location?.name, id: Date.now() },
-  //       ]);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [location]);
+  const currentLocation = weather?.location;
+  const CurrentDay = weather?.forecast?.forecastday[index]?.day;
+  const CurrentHour = weather?.forecast?.forecastday[index]?.hour;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://api.weatherapi.com/v1/forecast.json?key=d7a21304535c41b7a07211753252712&q=${location}&days=14&aqi=yes&alerts=yes`
+        );
+        if (!res.ok) {
+          throw new Error("problem in response");
+        }
+        const data = await res.json();
+        setWeather(data);
+        localStorage.setItem("weather", JSON.stringify(data));
+        setWeatherItems((prev) => {
+          const updated = [
+            ...prev,
+            { text: data?.location?.name, id: Date.now() },
+          ];
+          localStorage.setItem("weatherItems", JSON.stringify(updated));
+          return updated;
+        });
+        localStorage.setItem("location", location)
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [location]);
+
+  useEffect(() => {
+    localStorage.setItem("index", JSON.stringify(index))
+  }, [index])
 
   const getDay = (day) => {
     if (!day) return "";
@@ -95,11 +123,39 @@ const Context = ({ children }) => {
     }, {})
   );
 
-  const deleteItem = (e) => {
-    setWeatherItems(unice.filter((t) => t.id !== e));
+  const deleteItem = (id) => {
+  setWeatherItems(prev => {
+    const updated = prev.filter(item => item.id !== id);
+    localStorage.setItem("weatherItems", JSON.stringify(updated));
+    return updated;
+  });
+};
+
+  const uv = (u) => {
+    if (u <= 2) {
+      return "Scazut";
+    } else if (u > 2 && u <= 5) {
+      return "Moderat";
+    } else if (u > 5 && u <= 7) {
+      return "Ridicat";
+    } else if (u > 7 && u <= 10) {
+      return "Foarte ridicat";
+    } else if (u > 10) {
+      return "Extrem";
+    }
   };
 
   const AppValue = {
+    uv,
+    chevron,
+    setChevron,
+    titleTemp,
+    setTitleTemp,
+    index,
+    setIndex,
+    CurrentHour,
+    CurrentDay,
+    currentLocation,
     epoch,
     setEpoch,
     unice,
