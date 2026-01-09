@@ -3,19 +3,18 @@ import Hours from "../components/Hours/Hours";
 import Days from "../components/Days/Days";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import SelectDayDetails from "../components/SelectDayDetails/SelectDayDetails";
 
 const WeatherDay = () => {
   const navigate = useNavigate();
   const { weather, setEpoch, setIndex, setTitleTemp, chevron } =
     useContext(AppContext);
 
-  console.log(chevron);
-
   return (
     <div>
       <button
         style={{ display: chevron === true ? "none" : "flex" }}
-        className="weather-day-back-btn"
+        className="weather-day-back-btn btn-active"
         onClick={() => (
           setTitleTemp(true),
           setIndex(0),
@@ -27,6 +26,7 @@ const WeatherDay = () => {
         ❮
       </button>
       <Hours />
+      <SelectDayDetails />
     </div>
   );
 };

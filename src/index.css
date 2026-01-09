@@ -36,7 +36,7 @@ ul {
   --black-transparent: rgba(0, 0, 0, 15%);
   --black-transparent-1: rgba(0, 0, 0, 25%);
   --white: #ffffff;
-  --whiite-1: #d1d1d1;
+  --white-1: #d1d1d1;
   --blue: #5296f5;
   --blue-1: #7fceff;
   --blue-2: #91c1ff;
@@ -50,7 +50,12 @@ body{
   background-position: center;
   min-height: 100vh;
 }
-
+.btn-active:hover{
+  color: var(--white-1);
+}
+.btn-active:active{
+  color: var(--white);
+}
 .weather-day-back-btn{
   width: 25px;
   height: 25px;

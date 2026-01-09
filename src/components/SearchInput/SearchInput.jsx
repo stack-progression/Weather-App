@@ -14,7 +14,7 @@ const SearchInput = () => {
       defaultValue={location}
       onChange={(e) => setValue(e.target.value)}
       />
-      <button className='search-input-button' onClick={() => (setLocation(value))}><i className="fa-solid fa-magnifying-glass"></i></button>
+      <button className='search-input-button btn-active' onClick={() => (setLocation(value))}><i className="btn-active fa-solid fa-magnifying-glass"></i></button>
     </div>
   )
 }

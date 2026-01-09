@@ -23,7 +23,11 @@ const Context = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [chevron, setChevron] = useState(false);
   const [epoch, setEpoch] = useState(null);
-  const [titleTemp, setTitleTemp] = useState(true);
+
+  const [titleTemp, setTitleTemp] = useState(() => {
+    const saveTitle = localStorage.getItem("titleTemp");
+    return saveTitle ? JSON.parse(saveTitle) : true;
+  });
 
   const currentLocation = weather?.location;
   const CurrentDay = weather?.forecast?.forecastday[index]?.day;
@@ -33,10 +37,11 @@ const Context = ({ children }) => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://api.weatherapi.com/v1/forecast.json?key=d7a21304535c41b7a07211753252712&q=${location}&days=14&aqi=yes&alerts=yes`
+          `https://api.weatherapi.com/v1/forecast.json?key=d7d99fc74250487abe9222616260901&q=${location}&days=14&aqi=yes&alerts=yes`
         );
         if (!res.ok) {
-          throw new Error("problem in response");
+          throw new Error("problem in response"),
+          alert("Locatia nu a fost gasita!");
         }
         const data = await res.json();
         setWeather(data);
@@ -60,6 +65,10 @@ const Context = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("index", JSON.stringify(index))
   }, [index])
+
+  useEffect(() => {
+    localStorage.setItem("titleTemp", JSON.stringify(titleTemp))
+  }, [titleTemp])
 
   const getDay = (day) => {
     if (!day) return "";

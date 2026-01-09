@@ -14,7 +14,7 @@ const DayItem = (item) => {
           <i className="fa-solid fa-droplet"></i>
           {item.humidity}%
         </p>
-        <img className="dayItem-image" src={item.image} alt="" />
+        <img className="dayItem-image" src={item.image} alt="icon weather" />
       </div>
       <div className="dayItem-min-max">
         <p>{item.maxtemp}°</p>

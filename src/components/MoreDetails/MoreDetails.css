@@ -1,5 +1,6 @@
 /* phone version */
 .more-details {
+  text-align: center;
   margin: 15px 0;
   display: grid;
   grid-template-columns: 1fr 1fr;

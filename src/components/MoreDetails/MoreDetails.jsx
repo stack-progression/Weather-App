@@ -7,8 +7,6 @@ const MoreDetails = () => {
 
     const {weather, uv} = useContext(AppContext);
 
-    console.log(weather);
-
     const day = weather?.current
 
   return (

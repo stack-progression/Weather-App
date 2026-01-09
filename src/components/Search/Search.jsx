@@ -21,7 +21,7 @@ const Search = () => {
       <div className="close-btn-input">
         <button
           style={{ display: window.innerWidth >= 1300 ? "none" : "flex" }}
-          className="search-close-btn"
+          className="search-close-btn .btn-active"
           onClick={() => (setOpen(false), setChevron(false))}
         >
           <i className="fa-solid fa-xmark"></i>

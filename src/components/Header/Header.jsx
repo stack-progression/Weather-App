@@ -5,13 +5,11 @@ import { AppContext } from "../../context/AppContext";
 const Header = () => {
   const { weather, titleTemp, setOpen, open, epoch, getDay, setChevron, currentLocation, CurrentDay} = useContext(AppContext);
 
-  console.log(titleTemp);
-
   return (
     <div className="header">
       <button
         style={{ display: open >= true ? "none" : "flex" }}
-        className="header-btn-bar"
+        className="header-btn-bar btn-active"
         onClick={() => (setOpen(true), setChevron(true))}
       >
         <i className="fa-solid fa-bars"></i>
