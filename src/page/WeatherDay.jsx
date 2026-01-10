@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Hours from "../components/Hours/Hours";
-import Days from "../components/Days/Days";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import SelectDayDetails from "../components/SelectDayDetails/SelectDayDetails";

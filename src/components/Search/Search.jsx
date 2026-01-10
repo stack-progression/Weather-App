@@ -15,7 +15,7 @@ const Search = () => {
 
   return (
     <div
-      className="search active"
+      className={`search ${open === false ? "active" : ""}`}
       style={{ display: open === true ? "flex" : "none" }}
     >
       <div className="close-btn-input">
