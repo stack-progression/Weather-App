@@ -56,6 +56,14 @@ body{
 .btn-active:active{
   color: var(--white);
 }
+.loader{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: var(--white);
+}
 .weather-day-back-btn{
   width: 25px;
   height: 25px;

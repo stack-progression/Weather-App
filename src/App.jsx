@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -14,11 +14,9 @@ const App = () => {
 
   const {weather} = useContext(AppContext);
 
-  useEffect(() => {
     if(!weather){
-    return <div>Se incarca...</div>
+    return <div className="loader">Se incarca...</div>
   }
-  }, [weather]);
   
 
   const router = createBrowserRouter(
